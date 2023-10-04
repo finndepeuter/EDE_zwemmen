@@ -27,6 +27,9 @@ public class EventService {
             event1.setEventCode("50fly");
             event1.setName("50 Fly");
             event1.setParticipants(24);
+
+            eventRepository.save(event);
+            eventRepository.save(event1);
         }
     }
 
