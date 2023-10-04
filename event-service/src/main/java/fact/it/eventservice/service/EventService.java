@@ -17,7 +17,7 @@ public class EventService {
 
     @PostConstruct
     public void loadData() {
-        if(eventRepository.count() > 0) {
+        if(eventRepository.count() <= 0) {
             Event event = new Event();
             event.setEventCode("50free");
             event.setName("50 Freestyle");
@@ -26,7 +26,7 @@ public class EventService {
             Event event1 = new Event();
             event1.setEventCode("50fly");
             event1.setName("50 Fly");
-            event1.setParticipants(24);
+            event1.setParticipants(2);
 
             eventRepository.save(event);
             eventRepository.save(event1);

@@ -12,6 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Data
 public class BestTime {
-    private String event;
+    private String eventCode;
     private String time;
 }

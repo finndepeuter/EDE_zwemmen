@@ -17,7 +17,7 @@ public class Race {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String eventCode;
-    private String swimmerCode;
+    private String event;
+    private String swimmer;
     private String bestTime;
 }
