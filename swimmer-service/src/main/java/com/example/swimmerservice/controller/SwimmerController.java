@@ -1,5 +1,6 @@
 package com.example.swimmerservice.controller;
 
+import com.example.swimmerservice.dto.SwimmerRequest;
 import com.example.swimmerservice.dto.SwimmerResponse;
 import com.example.swimmerservice.service.SwimmerService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,11 @@ public class SwimmerController {
     public List<SwimmerResponse> getAllSwimmersBySwimmerCode(
             @RequestParam List<String> swimmerCode) {
         return swimmerService.getAllSwimmersBySwimmerCode(swimmerCode);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void createSwimmer(@RequestBody SwimmerRequest swimmerRequest) {
+        swimmerService.createSwimmer(swimmerRequest);
     }
 }
