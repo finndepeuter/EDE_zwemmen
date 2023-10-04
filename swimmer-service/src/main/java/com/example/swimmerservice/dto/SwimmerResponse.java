@@ -1,5 +1,6 @@
 package com.example.swimmerservice.dto;
 
+import com.example.swimmerservice.model.BestTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +19,5 @@ public class SwimmerResponse {
     private String lastName;
     private int birthYear;
     private String club;
-    private Array bestTimes;
+    private BestTime bestTimes;
 }

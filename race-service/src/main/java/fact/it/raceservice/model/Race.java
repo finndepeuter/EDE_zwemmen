@@ -17,5 +17,5 @@ public class Race {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    
+
 }

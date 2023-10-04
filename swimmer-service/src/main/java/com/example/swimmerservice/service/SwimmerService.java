@@ -47,6 +47,7 @@ public class SwimmerService {
                 .lastName(swimmer.getLastName())
                 .club(swimmer.getClub())
                 .birthYear(swimmer.getBirthYear())
+                .bestTimes(swimmer.getBestTimes())
                 .build();
     }
 }

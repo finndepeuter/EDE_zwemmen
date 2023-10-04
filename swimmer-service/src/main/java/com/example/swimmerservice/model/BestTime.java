@@ -6,19 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Document(value = "swimmer")
+@Document(value = "besttime")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class Swimmer {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String club;
-    private String swimmerCode;
-    private Integer birthYear;
-    private BestTime bestTimes;
-
+public class BestTime {
+    private String event;
+    private String time;
 }
