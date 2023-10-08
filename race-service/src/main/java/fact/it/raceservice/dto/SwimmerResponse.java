@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SwimmerResponse {
+    private String swimmerCode;
+    private String name;
 }

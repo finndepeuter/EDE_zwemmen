@@ -19,4 +19,5 @@ public class EventController {
     public List<EventResponse> isAvailable(@RequestParam List<String> eventCode) {
         return eventService.isAvailable(eventCode);
     }
+
 }

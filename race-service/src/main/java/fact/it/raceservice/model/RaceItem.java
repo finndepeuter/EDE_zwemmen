@@ -6,20 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-
 @Entity
-@Table(name = "race")
+@Table(name = "raceitem")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Race {
+public class RaceItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<RaceItem> raceItemList;
+    private String swimmerCode;
+    private String eventCode;
+    private String bestTime;
 }
