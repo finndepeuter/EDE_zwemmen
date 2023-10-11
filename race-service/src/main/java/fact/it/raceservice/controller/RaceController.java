@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class RaceController {
     private final RaceService raceService;
+    // POST race
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public String registerRace(@RequestBody RaceRequest raceRequest) {

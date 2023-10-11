@@ -28,8 +28,14 @@ public class EventService {
             event1.setName("50 Fly");
             event1.setParticipants(2);
 
+            Event event2 = new Event();
+            event2.setEventCode("50back");
+            event2.setName("50 backstroke");
+            event2.setParticipants(10);
+
             eventRepository.save(event);
             eventRepository.save(event1);
+            eventRepository.save(event2);
         }
     }
 
