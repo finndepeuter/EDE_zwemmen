@@ -14,6 +14,14 @@ import java.util.List;
 public class EventController {
     private final EventService eventService;
 
+    // GET all events
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<EventResponse> getEvents() {
+        return eventService.getEvents();
+    }
+
+    // CHECK IF EVENT IS AVAILABLE
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<EventResponse> isAvailable(@RequestParam List<String> eventCode) {

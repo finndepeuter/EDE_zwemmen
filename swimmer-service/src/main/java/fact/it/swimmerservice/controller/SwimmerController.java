@@ -35,5 +35,5 @@ public class SwimmerController {
         swimmerService.createSwimmer(swimmerRequest);
     }
 
-    // PUT swimmer, change the club and besttimes of the swimmer
+    // PUT swimmer
 }

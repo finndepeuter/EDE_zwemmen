@@ -39,6 +39,16 @@ public class EventService {
         }
     }
 
+    public List<EventResponse> getEvents() {
+        return eventRepository.findAll().stream().map(
+                event -> EventResponse.builder()
+                        .eventCode(event.getEventCode())
+                        .participants(event.getParticipants())
+                        .isAvailable(event.getParticipants() > 0)
+                        .build()
+        ).toList();
+    }
+
     @Transactional(readOnly = true)
     public List<EventResponse> isAvailable(List<String> eventCode) {
         return eventRepository.findByEventCodeIn(eventCode).stream()
