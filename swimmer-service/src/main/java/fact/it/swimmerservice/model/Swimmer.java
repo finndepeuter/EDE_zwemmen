@@ -1,23 +1,23 @@
-package com.example.swimmerservice.dto;
+package fact.it.swimmerservice.model;
 
-import com.example.swimmerservice.model.BestTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.lang.reflect.Array;
-
-@Data
-@Builder
+@Document(value = "swimmer")
 @AllArgsConstructor
 @NoArgsConstructor
-public class SwimmerResponse {
+@Builder
+@Data
+public class Swimmer {
     private String id;
-    private String swimmerCode;
     private String firstName;
     private String lastName;
-    private int birthYear;
     private String club;
+    private String swimmerCode;
+    private Integer birthYear;
     private BestTime bestTimes;
+
 }

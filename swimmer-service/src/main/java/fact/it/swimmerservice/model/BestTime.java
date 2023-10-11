@@ -1,4 +1,4 @@
-package com.example.swimmerservice.model;
+package fact.it.swimmerservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
