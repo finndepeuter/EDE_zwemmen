@@ -21,11 +21,12 @@ public class EventController {
         return eventService.getEvents();
     }
 
-    // CHECK IF EVENT IS AVAILABLE
+    // GET eventby eventcode
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EventResponse> isAvailable(@RequestParam List<String> eventCode) {
-        return eventService.isAvailable(eventCode);
+    public List<EventResponse> getEventByEventCode(@RequestParam List<String> eventcode) {
+        return eventService.getEventByEventCode(eventcode);
     }
+
 
 }

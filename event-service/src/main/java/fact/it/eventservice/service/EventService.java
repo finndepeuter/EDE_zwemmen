@@ -40,24 +40,22 @@ public class EventService {
     }
 
     public List<EventResponse> getEvents() {
-        return eventRepository.findAll().stream().map(
-                event -> EventResponse.builder()
-                        .eventCode(event.getEventCode())
-                        .participants(event.getParticipants())
-                        .isAvailable(event.getParticipants() > 0)
-                        .build()
-        ).toList();
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map(this::mapToEventResponse).toList();
     }
 
-    @Transactional(readOnly = true)
-    public List<EventResponse> isAvailable(List<String> eventCode) {
-        return eventRepository.findByEventCodeIn(eventCode).stream()
-                .map(event ->
-                        EventResponse.builder()
-                                .eventCode(event.getEventCode())
-                                .participants(event.getParticipants())
-                                .isAvailable(event.getParticipants() > 0)
-                                .build()
-                ).toList();
+    public List<EventResponse> getEventByEventCode(List<String> eventCode) {
+        List<Event> events = eventRepository.findByEventCodeIn(eventCode);
+        return events.stream().map(this::mapToEventResponse).toList();
+
+    }
+
+    private EventResponse mapToEventResponse(Event event) {
+        return EventResponse.builder()
+                .eventCode(event.getEventCode())
+                .participants(event.getParticipants())
+                .isAvailable(event.getParticipants() > 0)
+                .build();
+
     }
 }
