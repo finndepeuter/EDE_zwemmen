@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 @Transactional
 public interface EventRepository extends JpaRepository<Event, Long> {
-    List<Event> findByEventCodeIn(List<String> eventCode);
+    List<Event> findEventsByEventCode(String eventCode);
 }

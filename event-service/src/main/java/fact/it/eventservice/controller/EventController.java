@@ -15,17 +15,17 @@ public class EventController {
     private final EventService eventService;
 
     // GET all events
-    @GetMapping
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<EventResponse> getEvents() {
         return eventService.getEvents();
     }
 
-    // GET eventby eventcode
+    // GET event by eventcode
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EventResponse> getEventByEventCode(@RequestParam List<String> eventcode) {
-        return eventService.getEventByEventCode(eventcode);
+    public List<EventResponse> getEventByEventCode(@RequestParam String eventCode) {
+        return eventService.getEventByEventCode(eventCode);
     }
 
 

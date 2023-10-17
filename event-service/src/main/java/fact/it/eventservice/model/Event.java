@@ -18,5 +18,5 @@ public class Event {
     private Long id;
     private String name;
     private String eventCode;
-    private Integer participants;
+    private Integer freeSpots;
 }

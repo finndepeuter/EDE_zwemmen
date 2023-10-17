@@ -2,12 +2,15 @@ package fact.it.swimmerservice.controller;
 
 import fact.it.swimmerservice.dto.SwimmerRequest;
 import fact.it.swimmerservice.dto.SwimmerResponse;
+import fact.it.swimmerservice.model.Swimmer;
 import fact.it.swimmerservice.service.SwimmerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/swimmer")
@@ -23,9 +26,9 @@ public class SwimmerController {
     // GET swimmer by swimmercode
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<SwimmerResponse> getAllSwimmersBySwimmerCode(
+    public List<SwimmerResponse> getSwimmerBySwimmerCode(
             @RequestParam List<String> swimmerCode) {
-        return swimmerService.getAllSwimmersBySwimmerCode(swimmerCode);
+        return swimmerService.getSwimmerBySwimmerCode(swimmerCode);
     }
 
     // POST create swimmer
@@ -36,4 +39,9 @@ public class SwimmerController {
     }
 
     // PUT swimmer
+//    @PutMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public ResponseEntity<Swimmer> updateSwimmer(@RequestBody SwimmerRequest swimmerRequest, @PathVariable("swimmerCode") String swimmerCode) {
+//        Optional<Swimmer> swimmer = swimmerService.updateSwimmerBySwimmercode(swimmerCode)
+//    }
 }

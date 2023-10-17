@@ -1,9 +1,6 @@
 package fact.it.raceservice.service;
 
-import fact.it.raceservice.dto.EventResponse;
-import fact.it.raceservice.dto.RaceItemDto;
-import fact.it.raceservice.dto.RaceRequest;
-import fact.it.raceservice.dto.SwimmerResponse;
+import fact.it.raceservice.dto.*;
 import fact.it.raceservice.model.Race;
 import fact.it.raceservice.model.RaceItem;
 import fact.it.raceservice.repository.RaceRepository;
@@ -23,6 +20,11 @@ public class RaceService {
 
     private final RaceRepository raceRepository;
     private final WebClient webClient;
+
+    public List<RaceResponse> getAllRaces() {
+        List<Race> raceItems = raceRepository.findAll();
+        return raceItems.stream().map(this::mapToRaceResponse).toList();
+    }
 
     public boolean registerRace(RaceRequest raceRequest) {
         Race race = new Race();
@@ -55,7 +57,7 @@ public class RaceService {
 
         if(isAvailable) {
             SwimmerResponse[] swimmerResponses = webClient.get()
-                    .uri("http://localhost:8080/api/swimmer",
+                    .uri("http://localhost:8081/api/swimmer",
                             uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCodes).build())
                     .retrieve()
                     .bodyToMono(SwimmerResponse[].class)
@@ -88,4 +90,10 @@ public class RaceService {
         return raceItem;
     }
 
+    private RaceResponse mapToRaceResponse(Race race) {
+        return RaceResponse.builder()
+                .name(race.getName())
+                .raceItems(race.getRaceItemList())
+                .build();
+    }
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,11 +34,25 @@ public class SwimmerService {
         return swimmers.stream().map(this::mapToSwimmerResponse).toList();
     }
 
-    public List<SwimmerResponse> getAllSwimmersBySwimmerCode(List<String> swimmerCode) {
+    public List<SwimmerResponse> getSwimmerBySwimmerCode(List<String> swimmerCode) {
         List<Swimmer> swimmers = swimmerRepository.findBySwimmerCodeIn(swimmerCode);
 
         return swimmers.stream().map(this::mapToSwimmerResponse).toList();
     }
+
+
+//    public Optional<Swimmer> getOptionalSwimmerByCode(String swimmerCode){
+//        return getAllSwimmers().stream().filter(s-> s.getSwimmerCode()==swimmerCode).findFirst();
+//    }
+//
+//    public Swimmer updateSwimmerBySwimmerCode(Swimmer updateSwimmer, List<String> swimmerCode) {
+//        List<SwimmerResponse> swimmerOptional = getSwimmerBySwimmerCode(swimmerCode) ;
+//        if(swimmerOptional.isEmpty()) {
+//            return null;
+//        } else {
+//            Swimmer swimmer = swimmerOptional.get();
+//        }
+//    }
 
     private SwimmerResponse mapToSwimmerResponse(Swimmer swimmer) {
         return SwimmerResponse.builder()

@@ -21,17 +21,17 @@ public class EventService {
             Event event = new Event();
             event.setEventCode("50free");
             event.setName("50 Freestyle");
-            event.setParticipants(24);
+            event.setFreeSpots(24);
 
             Event event1 = new Event();
             event1.setEventCode("50fly");
             event1.setName("50 Fly");
-            event1.setParticipants(2);
+            event1.setFreeSpots(2);
 
             Event event2 = new Event();
             event2.setEventCode("50back");
             event2.setName("50 backstroke");
-            event2.setParticipants(10);
+            event2.setFreeSpots(10);
 
             eventRepository.save(event);
             eventRepository.save(event1);
@@ -44,18 +44,19 @@ public class EventService {
         return events.stream().map(this::mapToEventResponse).toList();
     }
 
-    public List<EventResponse> getEventByEventCode(List<String> eventCode) {
-        List<Event> events = eventRepository.findByEventCodeIn(eventCode);
+    public List<EventResponse> getEventByEventCode(String eventCode) {
+        List<Event> events = eventRepository.findEventsByEventCode(eventCode);
         return events.stream().map(this::mapToEventResponse).toList();
-
     }
 
     private EventResponse mapToEventResponse(Event event) {
         return EventResponse.builder()
                 .eventCode(event.getEventCode())
-                .participants(event.getParticipants())
-                .isAvailable(event.getParticipants() > 0)
+                .freeSpots(event.getFreeSpots())
+                .isAvailable(event.getFreeSpots() > 0)
                 .build();
 
     }
+
+
 }

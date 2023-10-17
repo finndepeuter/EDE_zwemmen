@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class EventResponse {
     private String eventCode;
-    private Integer participants;
+    private Integer freeSpots;
     private boolean isAvailable;
 }
