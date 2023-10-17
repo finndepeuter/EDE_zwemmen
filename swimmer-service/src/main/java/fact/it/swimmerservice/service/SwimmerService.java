@@ -2,8 +2,10 @@ package fact.it.swimmerservice.service;
 
 import fact.it.swimmerservice.dto.SwimmerRequest;
 import fact.it.swimmerservice.dto.SwimmerResponse;
+import fact.it.swimmerservice.model.BestTime;
 import fact.it.swimmerservice.model.Swimmer;
 import fact.it.swimmerservice.repository.SwimmerRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,27 @@ import java.util.Optional;
 public class SwimmerService {
 
     private final SwimmerRepository swimmerRepository;
+
+
+    @PostConstruct
+    public void loadData() {
+        if (swimmerRepository.count() <=0) {
+            BestTime bestTime;
+            Swimmer swimmer = Swimmer.builder()
+                    .id("1")
+                    .swimmerCode("bobjansens2001")
+                    .firstName("Bob")
+                    .lastName("Jansen")
+                    .club("HZA")
+                    .birthYear(2001)
+                    .bestTimes(bestTime = BestTime.builder()
+                            .time("34.20")
+                            .eventCode("50free")
+                            .build()).build();
+
+            swimmerRepository.save(swimmer);
+        }
+    }
 
     public void createSwimmer(SwimmerRequest swimmerRequest){
         Swimmer swimmer = Swimmer.builder()

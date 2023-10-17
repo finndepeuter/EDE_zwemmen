@@ -19,7 +19,7 @@ public class SwimmerController {
     private final SwimmerService swimmerService;
 
     // GET all swimmers
-    @GetMapping
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<SwimmerResponse> getAllSwimmers() {return swimmerService.getAllSwimmers();}
 
