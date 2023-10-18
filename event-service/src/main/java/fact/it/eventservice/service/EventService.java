@@ -17,25 +17,32 @@ public class EventService {
 
     @PostConstruct
     public void loadData() {
+        eventRepository.deleteAll();
         if(eventRepository.count() <= 0) {
             Event event = new Event();
             event.setEventCode("50free");
-            event.setName("50 Freestyle");
+            event.setName("50m Freestyle");
             event.setFreeSpots(24);
 
             Event event1 = new Event();
             event1.setEventCode("50fly");
-            event1.setName("50 Fly");
+            event1.setName("50m Fly");
             event1.setFreeSpots(2);
 
             Event event2 = new Event();
             event2.setEventCode("50back");
-            event2.setName("50 backstroke");
+            event2.setName("50m backstroke");
             event2.setFreeSpots(10);
+
+            Event event3 = new Event();
+            event3.setEventCode("50breast");
+            event3.setName("50m breaststroke");
+            event3.setFreeSpots(0);
 
             eventRepository.save(event);
             eventRepository.save(event1);
             eventRepository.save(event2);
+            eventRepository.save(event3);
         }
     }
 

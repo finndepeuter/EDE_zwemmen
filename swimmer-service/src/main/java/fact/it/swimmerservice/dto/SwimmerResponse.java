@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,5 +19,5 @@ public class SwimmerResponse {
     private String lastName;
     private int birthYear;
     private String club;
-    private BestTime bestTimes;
+    private List<BestTime> bestTimes;
 }

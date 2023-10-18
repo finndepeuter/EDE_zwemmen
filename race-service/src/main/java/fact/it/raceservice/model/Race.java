@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -19,7 +20,16 @@ public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String raceId;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<RaceItem> raceItemList;
+    private Date date;
+
+    private String eventCode;
+    private String eventName;
+
+    private String swimmerFirstName;
+    private String swimmerLastName;
+    private String bestTimeForEvent;
+
 }

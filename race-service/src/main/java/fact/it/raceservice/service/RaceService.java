@@ -2,7 +2,6 @@ package fact.it.raceservice.service;
 
 import fact.it.raceservice.dto.*;
 import fact.it.raceservice.model.Race;
-import fact.it.raceservice.model.RaceItem;
 import fact.it.raceservice.repository.RaceRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -22,78 +21,34 @@ public class RaceService {
     private final WebClient webClient;
 
     public List<RaceResponse> getAllRaces() {
-        List<Race> raceItems = raceRepository.findAll();
-        return raceItems.stream().map(this::mapToRaceResponse).toList();
+        List<Race> races = raceRepository.findAll();
+        return races.stream().map(this::mapToRaceResponse).toList();
     }
 
+    // TODO figure out registerRace
     public boolean registerRace(RaceRequest raceRequest) {
-        Race race = new Race();
-        race.setName("Placeholder");
+        return false;
+    }
 
-        List<RaceItem> raceItems = raceRequest.getRaceItems()
-                .stream()
-                .map(this::mapToRaceItem)
-                .toList();
-
-        race.setRaceItemList(raceItems);
-
-        List<String> eventCodes = race.getRaceItemList().stream()
-                .map(RaceItem::getEventCode)
-                .toList();
-
-        List<String> swimmerCodes = race.getRaceItemList().stream()
-                .map(RaceItem::getSwimmerCode)
-                .toList();
-
-        EventResponse[] eventResponses = webClient.get()
-                .uri("http://localhost:8082/api/event",
-                        uriBuilder -> uriBuilder.queryParam("eventCode", eventCodes).build())
-                .retrieve()
-                .bodyToMono(EventResponse[].class)
-                .block();
-
-        boolean isAvailable = Arrays.stream(eventResponses)
-                .allMatch(EventResponse::isAvailable);
-
-        if(isAvailable) {
-            SwimmerResponse[] swimmerResponses = webClient.get()
-                    .uri("http://localhost:8081/api/swimmer",
-                            uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCodes).build())
-                    .retrieve()
-                    .bodyToMono(SwimmerResponse[].class)
-                    .block();
-
-            race.getRaceItemList().stream()
-                            .map(raceItem -> {
-                                SwimmerResponse swimmer = Arrays.stream(swimmerResponses)
-                                        .filter(s -> s.getSwimmerCode().equals(raceItem.getSwimmerCode()))
-                                        .findFirst()
-                                        .orElse(null);
-                                if (swimmer != null) {
-                                    raceItem.setSwimmerCode(swimmer.getSwimmerCode());
-                                }
-                                return raceItem;
-                            })
-                                    .collect(Collectors.toList());
-            raceRepository.save(race);
+    public boolean deleteRace(String raceId) {
+        Race race = raceRepository.findRaceByRaceId(raceId);
+        if(race != null) {
+            raceRepository.deleteById(race.getId());
             return true;
         } else {
             return false;
         }
     }
 
-    private RaceItem mapToRaceItem(RaceItemDto raceItemDto) {
-        RaceItem raceItem = new RaceItem();
-        raceItem.setBestTime(raceItemDto.getBestTime());
-        raceItem.setEventCode(raceItemDto.getEventCode());
-        raceItem.setSwimmerCode(raceItemDto.getSwimmerCode());
-        return raceItem;
-    }
 
     private RaceResponse mapToRaceResponse(Race race) {
         return RaceResponse.builder()
                 .name(race.getName())
-                .raceItems(race.getRaceItemList())
+                .raceId(race.getRaceId())
+                .date(race.getDate())
+                .eventName(race.getEventName())
+                .swimmer(race.getSwimmerFirstName() + ' ' + race.getSwimmerLastName())
+                .bestTime(race.getBestTimeForEvent())
                 .build();
     }
 }

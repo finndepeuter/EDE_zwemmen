@@ -9,6 +9,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,19 +22,28 @@ public class SwimmerService {
 
     @PostConstruct
     public void loadData() {
+        swimmerRepository.deleteAll();
         if (swimmerRepository.count() <=0) {
-            BestTime bestTime;
+            List<BestTime> bestTimes = new ArrayList<>();
+            BestTime bestTime1 = BestTime.builder()
+                    .time("29.89")
+                    .eventCode("50free")
+                    .build();
+            BestTime bestTime2 = BestTime.builder()
+                    .time("34.20")
+                    .eventCode("50back")
+                    .build();
+            bestTimes.add(bestTime1);
+            bestTimes.add(bestTime2);
+
             Swimmer swimmer = Swimmer.builder()
                     .id("1")
                     .swimmerCode("bobjansens2001")
                     .firstName("Bob")
-                    .lastName("Jansen")
+                    .lastName("Jansens")
                     .club("HZA")
                     .birthYear(2001)
-                    .bestTimes(bestTime = BestTime.builder()
-                            .time("34.20")
-                            .eventCode("50free")
-                            .build()).build();
+                    .bestTimes(bestTimes).build();
 
             swimmerRepository.save(swimmer);
         }

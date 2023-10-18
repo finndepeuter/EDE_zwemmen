@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(value = "swimmer")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +20,6 @@ public class Swimmer {
     private String club;
     private String swimmerCode;
     private Integer birthYear;
-    private BestTime bestTimes;
+    private List<BestTime> bestTimes;
 
 }

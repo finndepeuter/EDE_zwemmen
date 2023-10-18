@@ -16,16 +16,25 @@ public class RaceController {
     private final RaceService raceService;
 
     // GET all races
-    @GetMapping
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<RaceResponse> getRaces() {
         return raceService.getAllRaces();
     }
+
     // POST race
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public String registerRace(@RequestBody RaceRequest raceRequest) {
         boolean result = raceService.registerRace(raceRequest);
         return (result ? "Race successfully registered" : "Race registering failed");
+    }
+
+    // DELETE race
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteRaceById(@RequestParam String raceId) {
+        boolean result = raceService.deleteRace(raceId);
+        return (result ? "Race successfully deleted" : "Race deleting failed");
     }
 }
