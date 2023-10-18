@@ -28,5 +28,10 @@ public class EventController {
         return eventService.getEventByEventCode(eventCode);
     }
 
-
+    // GET available events
+    @GetMapping("/available")
+    @ResponseStatus(HttpStatus.OK)
+    public List<EventResponse> getEventsAvailable() {
+        return eventService.getEventsAvailable();
+    }
 }

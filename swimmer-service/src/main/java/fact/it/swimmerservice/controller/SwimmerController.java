@@ -27,7 +27,7 @@ public class SwimmerController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<SwimmerResponse> getSwimmerBySwimmerCode(
-            @RequestParam List<String> swimmerCode) {
+            @RequestParam String swimmerCode) {
         return swimmerService.getSwimmerBySwimmerCode(swimmerCode);
     }
 

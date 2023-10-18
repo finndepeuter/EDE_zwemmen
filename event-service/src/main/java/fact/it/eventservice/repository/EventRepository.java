@@ -11,4 +11,5 @@ import java.util.List;
 @Transactional
 public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findEventsByEventCode(String eventCode);
+    List<Event> findEventsByFreeSpotsGreaterThan(int greaterThan);
 }

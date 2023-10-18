@@ -49,6 +49,11 @@ public class EventService {
         return events.stream().map(this::mapToEventResponse).toList();
     }
 
+    public List<EventResponse> getEventsAvailable() {
+        List<Event> events = eventRepository.findEventsByFreeSpotsGreaterThan(0);
+        return events.stream().map(this::mapToEventResponse).toList();
+    }
+
     private EventResponse mapToEventResponse(Event event) {
         return EventResponse.builder()
                 .eventCode(event.getEventCode())
