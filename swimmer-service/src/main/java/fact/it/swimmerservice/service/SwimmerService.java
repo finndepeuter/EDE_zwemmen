@@ -19,7 +19,6 @@ public class SwimmerService {
 
     private final SwimmerRepository swimmerRepository;
 
-
     @PostConstruct
     public void loadData() {
         swimmerRepository.deleteAll();
@@ -41,11 +40,21 @@ public class SwimmerService {
                     .swimmerCode("bobjansens2001")
                     .firstName("Bob")
                     .lastName("Jansens")
+                    .club("Moska")
+                    .birthYear(2001)
+                    .bestTimes(bestTimes).build();
+
+            Swimmer swimmer1 = Swimmer.builder()
+                    .id("2")
+                    .swimmerCode("finndepeuter2001")
+                    .firstName("Finn")
+                    .lastName("De Peuter")
                     .club("HZA")
                     .birthYear(2001)
                     .bestTimes(bestTimes).build();
 
             swimmerRepository.save(swimmer);
+            swimmerRepository.save(swimmer1);
         }
     }
 
