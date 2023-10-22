@@ -1,4 +1,4 @@
-package fact.it.eventservice.dto;
+package fact.it.raceservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

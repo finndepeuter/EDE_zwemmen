@@ -22,6 +22,11 @@ public class RaceController {
         return raceService.getAllRaces();
     }
 
+    // GET race by raceId
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public RaceResponse getRaceByRaceId(@RequestParam String raceId) {return raceService.getRaceByRaceId(raceId);}
+
     // POST race
     @PostMapping
     @ResponseStatus(HttpStatus.OK)

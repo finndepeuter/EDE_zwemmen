@@ -1,6 +1,5 @@
-package fact.it.swimmerservice.dto;
+package fact.it.raceservice.dto;
 
-import fact.it.swimmerservice.model.BestTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class SwimmerResponse {
     private String swimmerCode;
     private String firstName;
     private String lastName;
-    private List<BestTime> bestTimes;
 }

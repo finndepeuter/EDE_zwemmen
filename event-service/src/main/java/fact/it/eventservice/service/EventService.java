@@ -64,7 +64,7 @@ public class EventService {
     private EventResponse mapToEventResponse(Event event) {
         return EventResponse.builder()
                 .eventCode(event.getEventCode())
-                .freeSpots(event.getFreeSpots())
+                .name(event.getName())
                 .isAvailable(event.getFreeSpots() > 0)
                 .build();
 

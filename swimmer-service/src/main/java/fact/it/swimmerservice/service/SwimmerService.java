@@ -85,12 +85,9 @@ public class SwimmerService {
 
     private SwimmerResponse mapToSwimmerResponse(Swimmer swimmer) {
         return SwimmerResponse.builder()
-                .id(swimmer.getId())
                 .swimmerCode(swimmer.getSwimmerCode())
                 .firstName(swimmer.getFirstName())
                 .lastName(swimmer.getLastName())
-                .club(swimmer.getClub())
-                .birthYear(swimmer.getBirthYear())
                 .bestTimes(swimmer.getBestTimes())
                 .build();
     }

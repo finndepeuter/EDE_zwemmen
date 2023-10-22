@@ -13,6 +13,6 @@ import java.util.List;
 public class RaceRequest {
     private String name;
     private Date date;
-    private String swimCode;
+    private String swimmerCode;
     private String eventCode;
 }
