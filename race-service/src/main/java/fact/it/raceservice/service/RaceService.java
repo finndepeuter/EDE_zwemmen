@@ -74,7 +74,7 @@ public class RaceService {
 
         EventResponse[] eventAr = webClient.get()
                 //.uri("http://localhost:8082/api/event", uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
-                .uri(eventServiceBaseUrl, uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
+                .uri(eventServiceBaseUrl + "/api/event", uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
                 .retrieve()
                 .bodyToMono(EventResponse[].class)
                 .block();
@@ -83,7 +83,7 @@ public class RaceService {
 
         SwimmerResponse[] swimmerAr = webClient.get()
                 //.uri("http://localhost:8081/api/swimmer", uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
-                .uri(swimmerServiceBaseUrl, uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
+                .uri(swimmerServiceBaseUrl + "/api/swimmer", uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
                 .retrieve()
                 .bodyToMono(SwimmerResponse[].class)
                 .block();
