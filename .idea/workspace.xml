@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c602cf4e-c27e-4656-9a04-c5e941902546" name="Changes" comment="" />
+    <list default="true" id="c602cf4e-c27e-4656-9a04-c5e941902546" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/finnd/Documents/3APP01/EDE/project-zwemmen/race-service",
+    "last_opened_file_path": "C:/Users/finnd/Documents/3APP01/EDE/project-zwemmen",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -44,6 +47,7 @@
       <workItem from="1697957137328" duration="1446000" />
       <workItem from="1698145174650" duration="1781000" />
       <workItem from="1698215848204" duration="12000" />
+      <workItem from="1698220492333" duration="489000" />
     </task>
     <servers />
   </component>

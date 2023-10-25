@@ -6,6 +6,7 @@ import fact.it.raceservice.repository.RaceRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -25,6 +26,12 @@ public class RaceService {
 
     private final RaceRepository raceRepository;
     private final WebClient webClient;
+
+    @Value("${eventservice.baseurl}")
+    private String eventServiceBaseUrl;
+
+    @Value("${swimmerservice.baseurl}")
+    private String swimmerServiceBaseUrl;
 
     @PostConstruct
     public void loadData() {
@@ -66,7 +73,8 @@ public class RaceService {
         String eventCode = raceRequest.getEventCode();
 
         EventResponse[] eventAr = webClient.get()
-                .uri("http://localhost:8082/api/event", uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
+                //.uri("http://localhost:8082/api/event", uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
+                .uri(eventServiceBaseUrl + "/api/event", uriBuilder -> uriBuilder.queryParam("eventCode", eventCode).build())
                 .retrieve()
                 .bodyToMono(EventResponse[].class)
                 .block();
@@ -74,7 +82,8 @@ public class RaceService {
         String swimmerCode = raceRequest.getSwimmerCode();
 
         SwimmerResponse[] swimmerAr = webClient.get()
-                .uri("http://localhost:8081/api/swimmer", uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
+                //.uri("http://localhost:8081/api/swimmer", uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
+                .uri(swimmerServiceBaseUrl + "/api/swimmer", uriBuilder -> uriBuilder.queryParam("swimmerCode", swimmerCode).build())
                 .retrieve()
                 .bodyToMono(SwimmerResponse[].class)
                 .block();
