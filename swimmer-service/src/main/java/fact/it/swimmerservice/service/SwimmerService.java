@@ -88,7 +88,24 @@ public class SwimmerService {
                 .swimmerCode(swimmer.getSwimmerCode())
                 .firstName(swimmer.getFirstName())
                 .lastName(swimmer.getLastName())
+                .club(swimmer.getClub())
                 .bestTimes(swimmer.getBestTimes())
                 .build();
+    }
+
+    public boolean updateSwimmer(SwimmerRequest swimmerRequest) {
+        String swimmerCode = swimmerRequest.getSwimmerCode();
+        Optional<Swimmer> swimmer = swimmerRepository.findSwimmerBySwimmerCode(swimmerCode).stream().findFirst();
+        if (swimmer.isPresent()) {
+            Swimmer swimmer1 = swimmer.get();
+            swimmer1.setLastName(swimmerRequest.getLastName());
+            swimmer1.setFirstName(swimmerRequest.getFirstName());
+            swimmer1.setClub(swimmerRequest.getClub());
+            swimmer1.setBirthYear(swimmerRequest.getBirthYear());
+
+            swimmerRepository.save(swimmer1);
+            return true;
+        }
+        return false;
     }
 }

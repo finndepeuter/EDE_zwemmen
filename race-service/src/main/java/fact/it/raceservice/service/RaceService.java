@@ -58,7 +58,8 @@ public class RaceService {
 
     public boolean registerRace(RaceRequest raceRequest) {
         Race race = new Race();
-        race.setRaceId(UUID.randomUUID().toString());
+        int count = raceRepository.findAll().size() + 1;
+        race.setRaceId(Integer.toString(count));
         race.setName(raceRequest.getName());
         race.setDate(raceRequest.getDate());
 

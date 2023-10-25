@@ -40,9 +40,10 @@ public class SwimmerController {
 
     // TODO put swimmer
     // PUT swimmer
-//    @PutMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public ResponseEntity<Swimmer> updateSwimmer(@RequestBody SwimmerRequest swimmerRequest, @PathVariable("swimmerCode") String swimmerCode) {
-//        Optional<Swimmer> swimmer = swimmerService.updateSwimmerBySwimmercode(swimmerCode)
-//    }
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public String updateSwimmer(@RequestBody SwimmerRequest swimmerRequest) {
+        boolean result = swimmerService.updateSwimmer(swimmerRequest);
+        return (result ? "Swimmer succesfully edited" : "Swimmer editing failed");
+    }
 }
