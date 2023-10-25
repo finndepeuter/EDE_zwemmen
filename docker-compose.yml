@@ -27,7 +27,7 @@ services:
   event-service:
     depends_on:
       - mysql-event
-    image: finndepeuter/event-service
+    image: darkcloudhologram/event-service
     ports:
       - 8082:8082
     links:
@@ -41,7 +41,7 @@ services:
   swimmer-service:
     depends_on:
       - mongo-swimmers
-    image: finndepeuter/swimmer-service
+    image: darkcloudhologram/swimmer-service
     ports:
       - 8081:8081
     links:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - event-service
       - swimmer-service
-    image: finndepeuter/race-service
+    image: darkcloudhologram/race-service
     ports:
       - 8080:8080
     links:
