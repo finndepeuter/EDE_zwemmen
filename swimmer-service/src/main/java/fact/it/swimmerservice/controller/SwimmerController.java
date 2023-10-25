@@ -38,6 +38,7 @@ public class SwimmerController {
         swimmerService.createSwimmer(swimmerRequest);
     }
 
+    // TODO put swimmer
     // PUT swimmer
 //    @PutMapping
 //    @ResponseStatus(HttpStatus.OK)

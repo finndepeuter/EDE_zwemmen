@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -61,7 +62,7 @@ public class RaceService {
         return mapToRaceResponse(race);
     }
 
-    // TODO figure out registerRace
+
     public boolean registerRace(RaceRequest raceRequest) {
         Race race = new Race();
         race.setRaceId(UUID.randomUUID().toString());
@@ -103,6 +104,15 @@ public class RaceService {
             if (swimmer != null) {
                 race.setSwimmerFirstName(swimmer.getFirstName());
                 race.setSwimmerLastName(swimmer.getLastName());
+
+                BestTimeResponse[] bestTimes = swimmer.getBestTimes();
+                BestTimeResponse bestTimeForEvent = Arrays.stream(bestTimes)
+                                .filter(t -> t.getEventCode().equals(raceRequest.getEventCode()))
+                                .findFirst()
+                                .orElse(null);
+                if (bestTimeForEvent != null) {
+                    race.setBestTimeForEvent(bestTimeForEvent.getTime());
+                }
             }
 
             raceRepository.save(race);
