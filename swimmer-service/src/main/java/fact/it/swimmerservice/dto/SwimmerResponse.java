@@ -16,5 +16,6 @@ public class SwimmerResponse {
     private String swimmerCode;
     private String firstName;
     private String lastName;
+    private String club;
     private List<BestTime> bestTimes;
 }
