@@ -17,6 +17,7 @@ spring:
               uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
               predicates:
                 - Path=/races
+                - Path=/races/all
               filters:
                 - SetPath=/api/race
 
