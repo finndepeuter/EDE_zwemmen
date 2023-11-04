@@ -17,9 +17,15 @@ spring:
               uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
               predicates:
                 - Path=/races
-                - Path=/races/all
               filters:
                 - SetPath=/api/race
+
+            - id: race-service-all
+              uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
+              predicates:
+                - Path=/races/all
+              filters:
+                - SetPath=/api/race/all
 
             - id: swimmer-service
               uri: http://${SWIMMER_SERVICE_BASEURL:localhost:8081}
