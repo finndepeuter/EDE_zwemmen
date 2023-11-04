@@ -1,0 +1,37 @@
+server:
+    port: 8083
+
+logging:
+    level:
+        root: INFO
+        org.springframework.cloud.gateway: INFO
+        org.springframework.cloud.gateway.route.RouteDefinitionRoutLocator: INFO
+        reactor.netty: INFO
+        org.springframework.security: TRACE
+
+spring:
+    cloud:
+      gateway:
+        routes:
+            - id: race-service
+              uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
+              predicates:
+                - Path=/races
+              filters:
+                - SetPath=/api/race
+
+            - id: swimmer-service
+              uri: http://${SWIMMER_SERVICE_BASEURL:localhost:8081}
+              predicates:
+                - Path=/swimmers
+                - Method=PUT
+              filters:
+                - SetPath=/api/swimmer
+
+            - id: swimmer-service-all
+              uri: http://${SWIMMER_SERVICE_BASEURL:localhost:8081}
+              predicates:
+                - Path=/swimmers
+                - Method=GET
+              filters:
+                - SetPath=/api/swimmers/all
