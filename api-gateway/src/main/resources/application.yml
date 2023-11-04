@@ -19,14 +19,14 @@ spring:
                 - Path=/races
               filters:
                 - SetPath=/api/race
-                - SetPath=/api/race/all
 
-#            - id: race-service-all
-#              uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
-#              predicates:
-#                - Path=/races/all
-#              filters:
-#                - SetPath=/api/race/all
+            - id: race-service-all
+              uri: http://${RACE_SERVICE_BASEURL:localhost:8080}
+              predicates:
+                - Path=/races/all
+                - Method=GET
+              filters:
+                - SetPath=/api/race/all
 
             - id: swimmer-service
               uri: http://${SWIMMER_SERVICE_BASEURL:localhost:8081}
