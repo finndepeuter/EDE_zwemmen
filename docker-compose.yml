@@ -79,7 +79,7 @@ services:
       - swimmer-service
       - race-service
     environment:
-      SWIMMER_SERVER_BASEURL: swimmer-service:8081
+      SWIMMER_SERVICE_BASEURL: swimmer-service:8081
       RACE_SERVICE_BASEURL: race-service:8080
 
 volumes:
