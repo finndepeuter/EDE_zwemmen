@@ -34,4 +34,4 @@ spring:
                 - Path=/swimmers
                 - Method=GET
               filters:
-                - SetPath=/api/swimmers/all
+                - SetPath=/api/swimmer/all
