@@ -106,8 +106,8 @@ jobs:
       - name: Docker Build
         run: |
           docker build \
-            --build-arg GOOGLE_CLIENTID=${{ secrets.GOOGLE_CLIENTID }} \
-            --build-arg GOOGLE_CLIENTSECRET=${{ secrets.GOOGLE_CLIENTSECRET }} \
+            --build-arg GOOGLE_CLIENTID=$(secrets.GOOGLE_CLIENTID) \
+            --build-arg GOOGLE_CLIENTSECRET=$(secrets.GOOGLE_CLIENTSECRET) \
             -t ${{ secrets.DOCKER_USER }}/api-gateway-ede:latest \
             ./api-gateway
 
