@@ -1,0 +1,259 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-swimmers
+spec:
+  selector:
+    app: mongo-swimmers
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-event
+spec:
+  selector:
+    app: mysql-event
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-race
+spec:
+  selector:
+    app: mysql-race
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-swimmers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-swimmers
+  template:
+    metadata:
+      labels:
+        app: mongo-swimmers
+    spec:
+      containers:
+      - name: mongo-swimmers
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-swimmer-data
+          mountPath: /data/db
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-event
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-event
+  template:
+    metadata:
+      labels:
+        app: mysql-event
+    spec:
+      containers:
+      - name: mysql-event
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-event-data
+          mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: abc123
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-race
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-race
+  template:
+    metadata:
+      labels:
+        app: mysql-race
+    spec:
+      containers:
+      - name: mysql-race
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-race-data
+          mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: abc123
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-service
+  template:
+    metadata:
+      labels:
+        app: event-service
+    spec:
+      containers:
+      - name: event-service
+        image: darkcloudhologram/event-service
+        ports:
+        - containerPort: 8082
+        env:
+        - name: MYSQL_DB_USERNAME
+          value: root
+        - name: MYSQL_DB_PASSWORD
+          value: abc123
+        - name: MYSQL_DB_HOST
+          value: mysql-event
+        - name: MYSQL_DB_PORT
+          value: "3307"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swimmer-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swimmer-service
+  template:
+    metadata:
+      labels:
+        app: swimmer-service
+    spec:
+      containers:
+      - name: swimmer-service
+        image: darkcloudhologram/swimmer-service
+        ports:
+        - containerPort: 8081
+        env:
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGODB_HOST
+          value: mongo-swimmers
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: race-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: race-service
+  template:
+    metadata:
+      labels:
+        app: race-service
+    spec:
+      containers:
+      - name: race-service
+        image: darkcloudhologram/race-service
+        ports:
+        - containerPort: 8080
+        env:
+        - name: EVENT_SERVICE_BASEURL
+          value: "event-service:8082"
+        - name: SWIMMER_SERVICE_BASEURL
+          value: "swimmer-service:8081"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-swimmer-data
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/path/on/host/mongodb_swimmer_data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-event-data
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/path/on/host/mysql_event_data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-race-data
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/path/on/host/mysql_race_data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-swimmer-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-event-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-race-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

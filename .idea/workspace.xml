@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcbbd4a6-f46a-4a06-aa7b-da6a1e36ac85" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/main-flow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main-flow.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/finnd/Documents/3APP01/EDE/project-zwemmen/api-gateway",
+    "last_opened_file_path": "C:/Users/finnd/Documents/3APP01/EDE/project-zwemmen",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -49,6 +46,7 @@
       <workItem from="1699432523495" duration="1373000" />
       <workItem from="1699519163312" duration="20000" />
       <workItem from="1699953789785" duration="407000" />
+      <workItem from="1700049206891" duration="636000" />
     </task>
     <servers />
   </component>
