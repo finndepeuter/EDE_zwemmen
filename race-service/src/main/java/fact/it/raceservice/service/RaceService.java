@@ -88,41 +88,44 @@ public class RaceService {
                 .bodyToMono(SwimmerResponse[].class)
                 .block();
 
-        boolean isAvailable = Arrays.stream(eventAr).allMatch(EventResponse::isAvailable);
+        if (eventAr != null && swimmerAr != null) {
+            boolean isAvailable = Arrays.stream(eventAr).allMatch(EventResponse::isAvailable);
 
-        if (isAvailable){
-            EventResponse event = Arrays.stream(eventAr)
-                    .filter(e -> e.getEventCode().equals(raceRequest.getEventCode()))
-                    .findFirst()
-                    .orElse(null);
-            if (event != null) {
-                race.setEventName(event.getName());
-            }
-            SwimmerResponse swimmer = Arrays.stream(swimmerAr)
-                    .filter(s -> s.getSwimmerCode().equals(raceRequest.getSwimmerCode()))
-                    .findFirst()
-                    .orElse(null);
-            if (swimmer != null) {
-                race.setSwimmerFirstName(swimmer.getFirstName());
-                race.setSwimmerLastName(swimmer.getLastName());
-
-                BestTimeResponse[] bestTimes = swimmer.getBestTimes();
-                BestTimeResponse bestTimeForEvent = Arrays.stream(bestTimes)
-                                .filter(t -> t.getEventCode().equals(raceRequest.getEventCode()))
-                                .findFirst()
-                                .orElse(null);
-                if (bestTimeForEvent != null) {
-                    race.setBestTimeForEvent(bestTimeForEvent.getTime());
+            if (isAvailable) {
+                EventResponse event = Arrays.stream(eventAr)
+                        .filter(e -> e.getEventCode().equals(raceRequest.getEventCode()))
+                        .findFirst()
+                        .orElse(null);
+                if (event != null) {
+                    race.setEventName(event.getName());
                 }
+                SwimmerResponse swimmer = Arrays.stream(swimmerAr)
+                        .filter(s -> s.getSwimmerCode().equals(raceRequest.getSwimmerCode()))
+                        .findFirst()
+                        .orElse(null);
+                if (swimmer != null) {
+                    race.setSwimmerFirstName(swimmer.getFirstName());
+                    race.setSwimmerLastName(swimmer.getLastName());
+
+                    BestTimeResponse[] bestTimes = swimmer.getBestTimes();
+                    BestTimeResponse bestTimeForEvent = Arrays.stream(bestTimes)
+                            .filter(t -> t.getEventCode().equals(raceRequest.getEventCode()))
+                            .findFirst()
+                            .orElse(null);
+                    if (bestTimeForEvent != null) {
+                        race.setBestTimeForEvent(bestTimeForEvent.getTime());
+                    }
+                }
+
+                raceRepository.save(race);
+                return true;
+
+            } else {
+
+                return false;
             }
-
-            raceRepository.save(race);
-            return true;
-
-        } else {
-
-            return false;
         }
+        return false;
     }
 
     public boolean deleteRace(String raceId) {

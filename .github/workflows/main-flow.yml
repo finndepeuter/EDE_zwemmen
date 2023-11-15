@@ -19,7 +19,7 @@ jobs:
 
       - name: Build, test and package project
         working-directory: ./event-service
-        run: mvn package -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -45,7 +45,7 @@ jobs:
 
       - name: Build, test and package project
         working-directory: ./swimmer-service
-        run: mvn package -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -71,7 +71,7 @@ jobs:
 
       - name: Build, test and package project
         working-directory: ./race-service
-        run: mvn package -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
