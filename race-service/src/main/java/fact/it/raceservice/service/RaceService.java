@@ -47,7 +47,16 @@ public class RaceService {
             race.setSwimmerLastName("peeters");
             race.setBestTimeForEvent("35.20");
 
-            raceRepository.save(race);
+            Race race2 = new Race();
+            race2.setName("Sprintwedstrijd");
+            race2.setRaceId("2");
+            race2.setEventCode("50fly");
+            race2.setEventName("50m Butterfly");
+            race2.setDate(new Date());
+            race2.setSwimmerFirstName("Finn");
+            race2.setSwimmerLastName("De Peuter");
+            race2.setBestTimeForEvent("32.37");
+            raceRepository.save(race2);
         }
 
     }
