@@ -31,12 +31,12 @@ public class EventService {
 
             Event event2 = new Event();
             event2.setEventCode("50back");
-            event2.setName("50m backstroke");
+            event2.setName("50m Backstroke");
             event2.setFreeSpots(10);
 
             Event event3 = new Event();
             event3.setEventCode("50breast");
-            event3.setName("50m breaststroke");
+            event3.setName("50m Breaststroke");
             event3.setFreeSpots(0);
 
             eventRepository.save(event);

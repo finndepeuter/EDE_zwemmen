@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
+import java.util.UUID;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,8 +46,17 @@ public class RaceService {
             race.setSwimmerFirstName("JOst");
             race.setSwimmerLastName("peeters");
             race.setBestTimeForEvent("35.20");
-
             raceRepository.save(race);
+            Race race2 = new Race();
+            race2.setName("Sprintwedstrijd");
+            race2.setRaceId("2");
+            race2.setEventCode("50fly");
+            race2.setEventName("50m Butterfly");
+            race2.setDate(new Date());
+            race2.setSwimmerFirstName("Finn");
+            race2.setSwimmerLastName("De Peuter");
+            race2.setBestTimeForEvent("32.37");
+            raceRepository.save(race2);
         }
 
     }
@@ -65,8 +74,9 @@ public class RaceService {
 
     public boolean registerRace(RaceRequest raceRequest) {
         Race race = new Race();
-        int count = raceRepository.findAll().size() + 1;
-        race.setRaceId(Integer.toString(count));
+        // TODO fix id, ni gwn dit doen da werkt niet
+        String count = UUID.randomUUID().toString();
+        race.setRaceId(count);
         race.setName(raceRequest.getName());
         race.setDate(raceRequest.getDate());
 

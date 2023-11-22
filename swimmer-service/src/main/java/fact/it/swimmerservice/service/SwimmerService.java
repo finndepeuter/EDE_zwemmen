@@ -32,8 +32,18 @@ public class SwimmerService {
                     .time("34.20")
                     .eventCode("50back")
                     .build();
+            BestTime bestTime3 = BestTime.builder()
+                    .time("40.03")
+                    .eventCode("50breast")
+                    .build();
+            BestTime bestTime4 = BestTime.builder()
+                    .time("32.37")
+                    .eventCode("50fly")
+                    .build();
             bestTimes.add(bestTime1);
             bestTimes.add(bestTime2);
+            bestTimes.add(bestTime3);
+            bestTimes.add(bestTime4);
 
             Swimmer swimmer = Swimmer.builder()
                     .id("1")
