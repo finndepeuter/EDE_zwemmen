@@ -66,3 +66,11 @@ spring:
                 - Method=GET
               filters:
                 - SetPath=/api/swimmer
+
+            - id: event-service
+              uri: http://${EVENT_SERVICE_BASEURL:localhost:8082}
+              predicates:
+                - Path=/events
+                - Method=GET
+              filters:
+                - SetPath=/api/event/all
