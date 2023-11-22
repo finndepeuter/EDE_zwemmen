@@ -39,10 +39,22 @@ public class EventService {
             event3.setName("50m Breaststroke");
             event3.setFreeSpots(0);
 
+            Event event4 = new Event();
+            event4.setEventCode("100IM");
+            event4.setName("100m Individual Medley");
+            event4.setFreeSpots(10);
+
+            Event event5 = new Event();
+            event5.setEventCode("100free");
+            event5.setName("100m Freestyle");
+            event5.setFreeSpots(2);
+
             eventRepository.save(event);
             eventRepository.save(event1);
             eventRepository.save(event2);
             eventRepository.save(event3);
+            eventRepository.save(event4);
+            eventRepository.save(event5);
         }
     }
 

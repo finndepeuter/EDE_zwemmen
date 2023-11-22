@@ -23,27 +23,32 @@ public class SwimmerService {
     public void loadData() {
         swimmerRepository.deleteAll();
         if (swimmerRepository.count() <=0) {
-            List<BestTime> bestTimes = new ArrayList<>();
+            List<BestTime> bestTimes1 = new ArrayList<>();
             BestTime bestTime1 = BestTime.builder()
-                    .time("29.89")
+                    .time("32.15")
                     .eventCode("50free")
                     .build();
             BestTime bestTime2 = BestTime.builder()
-                    .time("34.20")
+                    .time("38.20")
                     .eventCode("50back")
                     .build();
             BestTime bestTime3 = BestTime.builder()
-                    .time("40.03")
+                    .time("45.78")
                     .eventCode("50breast")
                     .build();
             BestTime bestTime4 = BestTime.builder()
-                    .time("32.37")
+                    .time("36.39")
                     .eventCode("50fly")
                     .build();
-            bestTimes.add(bestTime1);
-            bestTimes.add(bestTime2);
-            bestTimes.add(bestTime3);
-            bestTimes.add(bestTime4);
+            BestTime bestTime9 = BestTime.builder()
+                    .time("1:22.47")
+                    .eventCode("100IM")
+                    .build();
+            bestTimes1.add(bestTime1);
+            bestTimes1.add(bestTime2);
+            bestTimes1.add(bestTime3);
+            bestTimes1.add(bestTime4);
+            bestTimes1.add(bestTime9);
 
             Swimmer swimmer = Swimmer.builder()
                     .id("1")
@@ -52,7 +57,30 @@ public class SwimmerService {
                     .lastName("Jansens")
                     .club("Moska")
                     .birthYear(2001)
-                    .bestTimes(bestTimes).build();
+                    .bestTimes(bestTimes1).build();
+
+            List<BestTime> bestTimes2 = new ArrayList<>();
+            BestTime bestTime5 = BestTime.builder()
+                    .time("29.89")
+                    .eventCode("50free")
+                    .build();
+            BestTime bestTime6 = BestTime.builder()
+                    .time("34.20")
+                    .eventCode("50back")
+                    .build();
+            BestTime bestTime7 = BestTime.builder()
+                    .time("40.03")
+                    .eventCode("50breast")
+                    .build();
+            BestTime bestTime8 = BestTime.builder()
+                    .time("32.37")
+                    .eventCode("50fly")
+                    .build();
+            bestTimes2.add(bestTime5);
+            bestTimes2.add(bestTime6);
+            bestTimes2.add(bestTime7);
+            bestTimes2.add(bestTime8);
+
 
             Swimmer swimmer1 = Swimmer.builder()
                     .id("2")
@@ -61,7 +89,7 @@ public class SwimmerService {
                     .lastName("De Peuter")
                     .club("HZA")
                     .birthYear(2001)
-                    .bestTimes(bestTimes).build();
+                    .bestTimes(bestTimes2).build();
 
             swimmerRepository.save(swimmer);
             swimmerRepository.save(swimmer1);
