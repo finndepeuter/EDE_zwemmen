@@ -1,4 +1,4 @@
-import {Routes, Route, BrowserRouter } from 'react-router-dom';
+import {Routes, Route, BrowserRouter, useNavigate, Router } from 'react-router-dom';
 import './App.css';
 import './swim.css';
 import Races from './components/races';
@@ -36,14 +36,11 @@ function Main() {
 function App() {
   const { login } = useAuth();
   const [ user, setUser] = useState(null);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleCallbackResponse(response) {
-    console.log(response);
-    console.log(response.credential);
     login(response.credential);
     var userData = jwtDecode(response.credential);
-    console.log(userData);
     setUser(userData.name);
     document.getElementById("signIn").hidden = true;
   }
@@ -54,6 +51,7 @@ function App() {
     google.accounts.id.renderButton(
       document.getElementById("signIn"), {theme: "outline", size: "large"}
   )
+  navigate('/')
   }
   
   useEffect(
@@ -71,7 +69,6 @@ function App() {
         }, [user]);
 
   return (
-    <BrowserRouter>
     <div className='main'>
     <Header></Header>
     <div id='signIn' style={{ marginBottom: '20px', marginTop: '20px' }}></div>
@@ -83,7 +80,6 @@ function App() {
     }
     <Main></Main>
     </div>
-    </BrowserRouter>
   );
 }
 

@@ -73,7 +73,7 @@ function InputRace() {
 
     const dropdownOptionsEvent = events.map((event) => ({
         key: event.eventCode,
-        text: `${event.eventName}`,
+        text: `${event.name}`,
         value: event.eventCode
     }))  ;
 

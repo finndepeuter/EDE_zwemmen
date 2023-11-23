@@ -18,7 +18,6 @@ function SwimmersComponent() {
       const fetchSwimmers = async () => {
         try {
           const result = await ApiGateway.getSwimmers(token);
-          console.log('API Response:', result.data); // Log the response
           setItems(result.data);
         } catch (error) {
           console.log('Something went wrong with the swimmers api.');

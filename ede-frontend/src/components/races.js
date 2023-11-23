@@ -17,7 +17,6 @@ function Races() {
   const fetchRaces = async () => {
     try {
       const result = await ApiGateway.getRaces();
-      console.log('API Response:', result.data); // Log the response
       setItems(result.data);
     } catch (error) {
       console.log('Something went wrong with the races api.');
@@ -56,9 +55,9 @@ function Races() {
   return (
     <div>
     <h2>Race Registrations</h2>
-    {/* <ol> */}
+   
         {output}
-    {/* </ol> */}
+  
     <Link onClick={() => navigate(-1)}>Back</Link>
     </div>
   )

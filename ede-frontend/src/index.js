@@ -6,15 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './components/auth_context'; 
+import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+  <BrowserRouter>
         <React.StrictMode>
           <AuthProvider>
             <App />
             </AuthProvider>
         </React.StrictMode>
-    
+        </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
