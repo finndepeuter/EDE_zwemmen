@@ -60,7 +60,7 @@ function App() {
     /* global google */
     () => {
         google.accounts.id.initialize({
-            client_id: "451675882135-4frbehkubaqq9r7gb4b0p4onld5c40g3.apps.googleusercontent.com",
+            client_id: process.env.REACT_APP_GOOGLE_CLIENTID,
             callback: handleCallbackResponse
         });
         
@@ -68,7 +68,7 @@ function App() {
           google.accounts.id.renderButton(
             document.getElementById("signIn"), {theme: "outline", size: "large"}
         )
-        
+         console.log(process.env)
         }, [user]);
 
   return (

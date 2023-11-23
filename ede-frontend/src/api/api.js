@@ -2,7 +2,7 @@ import axios from "axios";
 //import { useAuth } from "../components/auth_context";
 
 //const baseURL = "http://localhost:8083";
-const baseURL = "https://api-gateway-finndepeuter.cloud.okteto.net";
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 
 class ApiGateway {
