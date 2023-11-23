@@ -38,7 +38,7 @@ function SwimmersComponent() {
     return (
         <div>
           <h2>Swimmers</h2>
-            <ul>{output}</ul>
+            <>{output}</>
             <Link onClick={() => navigate(-1)}>Back</Link>
         </div>
     )

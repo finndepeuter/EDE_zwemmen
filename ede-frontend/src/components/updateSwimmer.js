@@ -5,7 +5,7 @@ import { useAuth } from './auth_context';
 import { Form, FormField , Button} from 'semantic-ui-react';
 
 function UpdateSwimmerComponent() {
-    const {token } = useAuth();
+  const { token } = useAuth();
   const { swimmerCode } = useParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,17 +13,18 @@ function UpdateSwimmerComponent() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-        console.log(swimmerCode);
-        const result = await ApiGateway.getSwimmer(swimmerCode, token);
-        const swimmer = result.data;
-        setFirstName(swimmer.firstName);
-        setLastName(swimmer.lastName);
-        setClub(swimmer.setClub);
-    }
-    fetchData()
-  }, [swimmerCode])
+    fetchSwimmer();
+  }, [])
 
+  const fetchSwimmer = async () => {
+    console.log(swimmerCode);
+    const result = await ApiGateway.getSwimmer(swimmerCode, token);
+    const swimmer = result.data;
+    console.log(swimmer)
+    setFirstName(swimmer[0].firstName);
+    setLastName(swimmer[0].lastName);
+    setClub(swimmer[0].club);
+}
 
   const handleSubmit = async () => {
     try {

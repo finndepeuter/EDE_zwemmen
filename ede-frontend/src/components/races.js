@@ -30,14 +30,13 @@ function Races() {
       <Col key={i}>
       <RaceCard name={item.name} swimmer={item.swimmer} event={item.eventName} besttime={item.bestTime} date={formatDate(item.date)} raceId={item.raceId} onClick={() => handleDelete(item.raceId)}/>
       </Col>
-
     ))}
     </Row>
   ) : null;
 
   const handleDelete = async (raceId) => {
     try {
-      // Assuming your API supports a DELETE endpoint for deleting a race
+      
       await ApiGateway.deleteRace(raceId, token);
 
       // After successful deletion, update the state to re-render the component
