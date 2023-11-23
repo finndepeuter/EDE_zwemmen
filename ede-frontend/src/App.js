@@ -68,7 +68,6 @@ function App() {
           google.accounts.id.renderButton(
             document.getElementById("signIn"), {theme: "outline", size: "large"}
         )
-         console.log(process.env)
         }, [user]);
 
   return (

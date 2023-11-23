@@ -81,6 +81,7 @@ services:
     environment:
       SWIMMER_SERVICE_BASEURL: swimmer-service:8081
       RACE_SERVICE_BASEURL: race-service:8080
+      EVENT_SERVICE_BASEURL: event-service:8082
 
 volumes:
   mongodb_swimmer_data:
