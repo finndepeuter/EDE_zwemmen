@@ -1,0 +1,22 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  @import url('semantic-ui-css/semantic.min.css');
+
+  .main-header{
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .sign-in {
+    position: absolute;
+    top: 10px; /* You can adjust the top and right values as needed */
+    right: 10px;
+  }
+  
+  
