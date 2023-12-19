@@ -86,7 +86,7 @@ function InputRace() {
                 </Form.Field>
                 <Form.Field>
                     <label>Date</label>
-                    <input placeholder="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                    <input type="date" placeholder="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
                 </Form.Field>
                 <Form.Field>
                     <label>Swimmer</label>

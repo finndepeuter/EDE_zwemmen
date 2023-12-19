@@ -74,7 +74,6 @@ public class RaceService {
 
     public boolean registerRace(RaceRequest raceRequest) {
         Race race = new Race();
-        // TODO fix id, ni gwn dit doen da werkt niet
         String count = UUID.randomUUID().toString();
         race.setRaceId(count);
         race.setName(raceRequest.getName());
