@@ -7,7 +7,7 @@ function Home() {
   return (
     <div>
       {token && (
-        <ul className="header">
+        <ul className="navbar">
           <li>
             <NavLink to="/" className={({ isActive }) => isActive ? "active" : undefined}>
               Home
@@ -41,5 +41,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;

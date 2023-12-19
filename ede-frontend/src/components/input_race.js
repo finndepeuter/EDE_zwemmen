@@ -101,7 +101,6 @@ function InputRace() {
                 </Form.Field>
                 <Form.Field>
                     <label>Eventcode</label>
-                    {/* <input placeholder="eventcode" value={eventCode} onChange={(e) => setEventCode(e.target.value)}></input> */}
                     <Dropdown
                             placeholder="Select event"
                         

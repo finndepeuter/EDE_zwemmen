@@ -19,4 +19,32 @@
     right: 10px;
   }
   
+  .navbar,
+  .navbar li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar {
+    overflow: hidden;
+    margin-top: 50;
+    text-align: center;
+  }
+  
+  .navbar li {
+    float: left;
+    margin-right: 10px; /* Adjust the margin to add space between buttons */
+  }
+  
+  .nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+
   
