@@ -17,6 +17,7 @@ Through the gateway these are the endpoints that are available:
 - GET specific race
 - POST race
 - DELETE race
+- GET all events
 
 The only endpoint that is public is the get all races one. For the others you have to be logged in.
 
@@ -34,6 +35,7 @@ The only endpoint that is public is the get all races one. For the others you ha
 ![Alt postman post race](/assets/postrace.png)
 ### DELETE race
 ![Alt postman delete race](/assets/deleteRace.png)
+### GET events
 
 ## Hosting
 The microservices are hosted with Okteto at these links:
@@ -41,6 +43,7 @@ The microservices are hosted with Okteto at these links:
 - [Other swimmer related requests](https://api-gateway-finndepeuter.cloud.okteto.net/swimmers) (needs authentication)
 - [GET all races](https://api-gateway-finndepeuter.cloud.okteto.net/races/all) (public)
 - [Other races related requests](https://api-gateway-finndepeuter.cloud.okteto.net/races) (needs authentication)
+- [GET all events](https://api-gateway-finndepeuter.cloud.okteto.net/events) (needs authentication)
 
 ## Frontend
-I decided to make a front-end to accompany the microservices. I made this in React.
+I decided to make a front-end to accompany the microservices. I made this in React. The front-end isn't hosted anywhere.
