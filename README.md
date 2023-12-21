@@ -71,6 +71,11 @@ If you click on the swimmers tab this is what you see. You see all the swimmers 
 
 
 ![Alt overview swimmers](/assets/swimmersFront.png)
+
+If you click on update swimmer, you can change the name and club of the swimmer:
+
+
+![Alt update swimmer](/assets/updateSwimmer.png)
 ### Register form
 If you lastly click on the register tab, you can see this. You get a form to register for a race.
 
