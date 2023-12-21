@@ -47,26 +47,31 @@ The microservices are hosted with Okteto at these links:
 - [Other races related requests](https://api-gateway-finndepeuter.cloud.okteto.net/races) (needs authentication)
 - [GET all events](https://api-gateway-finndepeuter.cloud.okteto.net/events) (needs authentication)
 
-## Frontend
+## Front-end
 I decided to make a front-end to accompany the microservices. I made this in React. The front-end isn't hosted anywhere.
-
+### Homescreen
 The homescreen you see when you open the application is this:
 
 
 ![Alt homescreen](/assets/homescreenFront.png)
 
+Once you log in the homescreen changes to this:
 
+
+![Alt logged in homescreen](/assets/loggedInScreen.png)
+
+### Races
 If you click on the races tab this is what you see. Here you can delete races and just see an overview of all the registrations.
 
 
 ![Alt overview races](/assets/racesFront.png)
 
-
+### Swimmers
 If you click on the swimmers tab this is what you see. You see all the swimmers with their clubs and besttimes.
 
 
 ![Alt overview swimmers](/assets/swimmersFront.png)
-
+### Register form
 If you lastly click on the register tab, you can see this. You get a form to register for a race.
 
 
