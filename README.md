@@ -8,6 +8,8 @@ Above this lays an api-gateway layer, to ensure that not every endpoint is freel
 
 ## Schema in draw.io
 The point is that you can register yourself for a race. To do this, you have to give a name for the race, a date, a swimmercode and an eventcode. With the eventcode, the name of the event will be retrieved, and there will be checked if there is still places available to register. With the swimmercode the service will go check in the swimmer-service if this swimmer is available. Here the eventcode is also used to retrieve the besttime of this swimmer for that event. 
+
+![Alt drawio schema](/assets/schema.png)
 ## Endpoints in Postman
 Through the gateway these are the endpoints that are available:
 - GET all swimmers 
@@ -36,7 +38,7 @@ The only endpoint that is public is the get all races one. For the others you ha
 ### DELETE race
 ![Alt postman delete race](/assets/deleteRace.png)
 ### GET events
-
+![Alt postman get events](/assets/getEvents.png)
 ## Hosting
 The microservices are hosted with Okteto at these links:
 - [GET all swimmers](https://api-gateway-finndepeuter.cloud.okteto.net/swimmers/all) (needs authentication)
@@ -47,3 +49,25 @@ The microservices are hosted with Okteto at these links:
 
 ## Frontend
 I decided to make a front-end to accompany the microservices. I made this in React. The front-end isn't hosted anywhere.
+
+The homescreen you see when you open the application is this:
+
+
+![Alt homescreen](/assets/homescreenFront.png)
+
+
+If you click on the races tab this is what you see. Here you can delete races and just see an overview of all the registrations.
+
+
+![Alt overview races](/assets/racesFront.png)
+
+
+If you click on the swimmers tab this is what you see. You see all the swimmers with their clubs and besttimes.
+
+
+![Alt overview swimmers](/assets/swimmersFront.png)
+
+If you lastly click on the register tab, you can see this. You get a form to register for a race.
+
+
+![Alt register for a race](/assets/registerRaceFront.png)
